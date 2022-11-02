@@ -1,0 +1,14 @@
+[workspace]
+
+members = [
+      "binary-search",
+      "quick-sort",
+      "tests",
+]
+          
+[profile.release]
+strip = true
+opt-level = "s"
+lto = true
+codegen-units = 1
+#panic = "abort"

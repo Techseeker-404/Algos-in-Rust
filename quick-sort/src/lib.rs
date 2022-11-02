@@ -1,7 +1,7 @@
 /// Quick sort in Rust.
 /// Not for float data types as PartialOrd not implemented
 pub fn quick_sort<T>(arr: &mut [T]) 
-where T: Copy + PartialOrd + PartialEq + ,
+where T: Copy + PartialOrd + PartialEq,
 {
     if arr.len() > 1 {
         let prt_index = partition(arr);
@@ -13,7 +13,7 @@ where T: Copy + PartialOrd + PartialEq + ,
 ///Partition Function to partition the iterator
 ///data-type eg: Array or Vector type.
 ///Not for float data types as PartialOrd not implemented
-fn partition<T: Copy+ PartialOrd + PartialEq >(arr: &mut [T]) -> usize {
+fn partition<T: Copy+ PartialOrd + PartialEq>(arr: &mut [T]) -> usize {
     let lst_idx = arr.len() - 1;
     let pivot = arr[lst_idx];
     let mut p_index = 0;

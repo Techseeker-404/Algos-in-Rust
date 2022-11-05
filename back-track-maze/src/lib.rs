@@ -47,6 +47,7 @@ fn back_track(vector: &Vec<Vec<u8>>, x: usize, y: usize, soln_vect: &mut Vec<Vec
         soln_vect[x][y] = 1u8;
         return true;
     }
+
     if good_to_proceed(&vector, x, y) {
         soln_vect[x][y] = 1u8;
         if back_track(&vector, x + 1usize, y, soln_vect) {
@@ -57,9 +58,9 @@ fn back_track(vector: &Vec<Vec<u8>>, x: usize, y: usize, soln_vect: &mut Vec<Vec
             soln_vect[x][y] = 0u8; // back-tracking
             return false;
         }
+    } else {
+        return false;
     }
-
-    return false;
 }
 
 #[cfg(test)]
@@ -68,7 +69,7 @@ mod tests {
 
     #[test]
     fn test_rat_in_maze_logic() {
-        //Maze that Rat is stucked in.
+        // Problem MAZE -> (MATRIX)
         let maze_vec: Vec<Vec<u8>> = Vec::from([
             vec![1, 0, 1, 0, 1],
             vec![1, 1, 1, 1, 1],
@@ -76,7 +77,7 @@ mod tests {
             vec![1, 0, 0, 1, 1],
             vec![1, 1, 1, 0, 1],
         ]);
-        //Actual Path that Rat will traverse;
+        //Actual Path that Rat will go;
         let path_vec: Vec<Vec<u8>> = Vec::from([
             vec![1, 0, 0, 0, 0],
             vec![1, 1, 1, 1, 0],

@@ -4,6 +4,7 @@ members = [
       "binary-search",
       "quick-sort",
       "tests",
+      "back-track-maze",
 ]
           
 [profile.release]

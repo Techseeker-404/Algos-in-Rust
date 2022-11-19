@@ -1,5 +1,6 @@
 use binary_search::bin_search;
 use quick_sort::quick_sort;
+use back_track_maze::*;
 
 //Test for Array data-type.
 #[test]
@@ -51,3 +52,27 @@ fn test_quick_sort_alpha_array() {
     let _ = quick_sort(&mut alpha_array);
     assert_eq!(["a", "b", "c", "d", "e", "f"], alpha_array);
 }
+
+#[test]
+fn test_rat_in_maze_logic() {
+    // Problem MAZE -> (MATRIX)
+    let maze_vec: Vec<Vec<u8>> = Vec::from([
+        vec![1, 0, 1, 0, 1],
+        vec![1, 1, 1, 0, 1],
+        vec![0, 1, 1, 0, 0],
+        vec![1, 0, 1, 0, 1],
+        vec![1, 1, 1, 1, 1],
+    ]);
+    //Actual Path that Rat will go;
+    let path_vec: Vec<Vec<u8>> = Vec::from([
+        vec![1, 0, 0, 0, 0],
+        vec![1, 1, 0, 0, 0],
+        vec![0, 1, 1, 0, 0],
+        vec![0, 0, 1, 0, 0],
+        vec![0, 0, 1, 1, 1],
+    ]);
+    let mut vec_bit_map = ZeroBitFieldVector::new(5);
+    back_track(&maze_vec, 0, 0, &mut vec_bit_map);
+    assert_eq!(path_vec, vec_bit_map);
+}
+

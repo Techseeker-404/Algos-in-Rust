@@ -2,10 +2,10 @@
 use std::fmt;
 use std::result::Result;
 
-struct ZeroBitFieldVector;
+pub struct ZeroBitFieldVector;
 
 impl ZeroBitFieldVector {
-    fn new(capacity: usize) -> Vec<Vec<u8>> {
+    pub fn new(capacity: usize) -> Vec<Vec<u8>> {
         let mut vec_arr = Vec::with_capacity(capacity);
         let mut cnt: usize = 0;
         'push: loop {
@@ -20,11 +20,11 @@ impl ZeroBitFieldVector {
 }
 
 #[derive(Debug)]
-enum VecDispError {
+pub enum VecDispError {
     UnInitialized(&'static str),
 }
 
-fn display_2d_vec<T: fmt::Debug>(vec: &Vec<T>) -> Result<(), VecDispError> {
+pub fn display_2d_vec<T: fmt::Debug>(vec: &Vec<T>) -> Result<(), VecDispError> {
     if vec.len() == 0 {
         return Err(VecDispError::UnInitialized("Un-Initialized vector"));
     }
@@ -42,7 +42,7 @@ fn good_to_proceed(vector: &Vec<Vec<u8>>, x: usize, y: usize) -> bool {
     }
 }
 
-fn back_track(vector: &Vec<Vec<u8>>, x: usize, y: usize, soln_vect: &mut Vec<Vec<u8>>) -> bool {
+pub fn back_track(vector: &Vec<Vec<u8>>, x: usize, y: usize, soln_vect: &mut Vec<Vec<u8>>) -> bool {
     if x == vector.len() - 1 && y == vector.len() - 1 {
         soln_vect[x][y] = 1u8;
         return true;

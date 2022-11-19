@@ -7,6 +7,7 @@ publish = false
 [dev-dependencies]
 binary-search = { path = "../binary-search" }
 quick-sort = { path = "../quick-sort" }
+back-track-maze = { path = "../back-track-maze" }
 
 [[test]]
 name = "integration_test"

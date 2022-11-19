@@ -3,8 +3,9 @@
 members = [
       "binary-search",
       "quick-sort",
-      "tests",
       "back-track-maze",
+      "bin-tree",
+      "tests",
 ]
           
 [profile.release]

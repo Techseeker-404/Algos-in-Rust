@@ -34,13 +34,17 @@ impl Tree {
     fn insert(&mut self, value: i32) {
         match &self.root {
             None => {
-                self.root = Node::new(value).into();
+                //let _ = std::mem::replace(&mut self.root, Node::new(value).into());
+                self.root = Node::new(value).into()
             }
-            Some(node) => self._insert_recursive(node.clone(), value),
+
+            Some(node) => {
+                self._insert_recursive(node.clone(), value);
+            }
         }
     }
 
-    fn _insert_recursive(&mut self, node: Rc<RefCell<Node>>, value: i32) {
+    fn _insert_recursive(&self, node: Rc<RefCell<Node>>, value: i32) {
         let mut node = node.borrow_mut();
         if value > node.value {
             if let Some(node_type) = &node.right {
@@ -78,5 +82,8 @@ fn main() {
     tree.insert(5);
     tree.insert(3);
     tree.insert(17);
+    tree.insert(15);
+    tree.insert(1);
+    tree.insert(7);
     println!("{tree:#?}");
 }
